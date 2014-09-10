@@ -22,11 +22,8 @@ RUN git config --global url."https://".insteadOf git://
 # Download 'n' node version manager
 RUN curl -#L https://github.com/visionmedia/n/archive/v1.2.7.tar.gz | tar -xzv
 
-# Go into downloaded directory
-RUN cd n-1.2.7/
-
-# Install 'n'
-RUN sudo make install
+# Go into downloaded directory and install 'n'
+RUN cd n-1.2.7 && sudo make install
 
 # Install Node
 RUN n 0.10.31
