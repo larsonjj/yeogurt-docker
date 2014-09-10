@@ -5,8 +5,8 @@ MAINTAINER Jake Larson <jake.j.larson@gmail.com>
 # Update Ubuntu Dependencies
 RUN apt-get -yq update && apt-get -yq upgrade
 
-# Install build tools, git, and libssl-dev
-RUN apt-get install build-essential libssl-dev curl git -y
+# Install make, git, curl, and libssl-dev
+RUN apt-get install make libssl-dev curl git -y
 
 # Configure git to use HTTPS instead of git port (Fixes issues with corporate networks)
 RUN git config --global url."https://".insteadOf git://
