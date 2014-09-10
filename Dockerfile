@@ -26,7 +26,7 @@ RUN curl -#L https://github.com/visionmedia/n/archive/v1.2.7.tar.gz | tar -xzv
 RUN cd n-1.2.7/
 
 # Install 'n'
-RUN make install
+RUN sudo make install
 
 # Install Node
 RUN n 0.10.31
