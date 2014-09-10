@@ -61,8 +61,8 @@ RUN apt-get update -y
 
 # Install MySQL server with default username and password
 RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password root' \
-  debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root' \
-  apt-get -y install mysql-server
+  && debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root' \
+  && apt-get -y install mysql-server
 
 ##- Setup yeoman user -##
 
