@@ -87,12 +87,12 @@ USER yeogurt
 WORKDIR /home/yeogurt
 
 ##- Expose ports -##
-EXPOSE 9010 # App server
-EXPOSE 9011 # Test server
-EXPOSE 35729 # Live reload
-EXPOSE 5858 # Node debugger
-EXPOSE 27017 # MongoDB
-EXPOSE 3306 # MySQL
+EXPOSE 9010
+EXPOSE 9011
+EXPOSE 35729
+EXPOSE 5858
+EXPOSE 27017
+EXPOSE 3306
 
 ##- Setup Bash -##
 CMD ["/bin/bash"]
