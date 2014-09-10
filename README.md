@@ -1,4 +1,4 @@
-Docker Setup for Yeogur Generator
+Docker Setup for Yeogurt Generator
 ==============
 
 Setup up Yeogurt generator quick and easy using [Docker](https://docker.io)
