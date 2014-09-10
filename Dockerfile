@@ -29,7 +29,7 @@ RUN cd n-1.2.7 && sudo make install
 RUN n 0.10.31
 
 # Cleanup
-RUN rm -rf n-1.2.7/
+RUN cd .. && rm -rf n-1.2.7/
 
 ##- Install Yeogurt -##
 
