@@ -2,6 +2,9 @@
 FROM ubuntu:14.04
 MAINTAINER Jake Larson <jake.j.larson@gmail.com>
 
+# Make command line non-interactive
+ENV DEBIAN_FRONTEND noninteractive
+
 # Update Ubuntu Dependencies
 RUN apt-get -yq update && apt-get -yq upgrade
 
@@ -54,15 +57,26 @@ RUN apt-get install -y mongodb-org=2.6.1 mongodb-org-server=2.6.1 mongodb-org-sh
 # Pin to the exact version above, so it's not auto upgraded by apt-get
 RUN echo "mongodb-10gen hold" | dpkg --set-selections
 
+# Create the MongoDB data directory
+RUN mkdir -p /data/db
+
 ##- Install MySQL -##
 
 # Update dependencies
 RUN apt-get update -y
 
 # Install MySQL server with default username and password
-RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password root' \
-  && debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root' \
-  && apt-get -y install mysql-server
+RUN apt-get -qq update
+RUN apt-get install -y mysql-server
+
+ADD my.cnf /etc/mysql/conf.d/my.cnf
+
+ADD mysql_setup.sh /usr/local/bin/mysql_setup.sh
+RUN chmod 755 /usr/local/bin/mysql_setup.sh
+RUN /usr/local/bin/mysql_setup.sh
+
+EXPOSE 3306
+VOLUME ["/var/lib/mysql"]
 
 ##- Setup yeoman user -##
 
@@ -78,6 +92,7 @@ EXPOSE 9010 # App server
 EXPOSE 9011 # Test server
 EXPOSE 35729 # Live reload
 EXPOSE 5858 # Node debugger
+EXPOSE 27017 # MongoDB
 
 ##- Setup Bash -##
 CMD ["/bin/bash"]
