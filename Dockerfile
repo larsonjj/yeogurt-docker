@@ -75,7 +75,6 @@ ADD mysql_setup.sh /usr/local/bin/mysql_setup.sh
 RUN chmod 755 /usr/local/bin/mysql_setup.sh
 RUN /usr/local/bin/mysql_setup.sh
 
-EXPOSE 3306
 VOLUME ["/var/lib/mysql"]
 
 ##- Setup yeoman user -##
@@ -93,6 +92,7 @@ EXPOSE 9011 # Test server
 EXPOSE 35729 # Live reload
 EXPOSE 5858 # Node debugger
 EXPOSE 27017 # MongoDB
+EXPOSE 3306 # MySQL
 
 ##- Setup Bash -##
 CMD ["/bin/bash"]
