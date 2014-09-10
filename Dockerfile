@@ -31,6 +31,9 @@ RUN make install
 # Install Node
 RUN n 0.10.31
 
+# Cleanup
+RUN rm -rf n-1.2.7/
+
 ##- Install Yeogurt -##
 
 # Update dependencies
