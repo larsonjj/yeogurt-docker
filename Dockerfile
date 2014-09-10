@@ -20,7 +20,7 @@ RUN git config --global url."https://".insteadOf git://
 ##- Install Node.js -##
 
 # Download 'n' node version manager
-RUN curl -#L https://github.com/visionmedia/n/archive/v1.2.7.tar.gz | tar -xzv --strip-components 1
+RUN curl -#L https://github.com/visionmedia/n/archive/v1.2.7.tar.gz | tar -xzv
 
 # Go into downloaded directory
 RUN cd n-1.2.7/
