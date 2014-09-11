@@ -82,9 +82,9 @@ VOLUME ["/var/lib/mysql"]
 # Add a yeogurt user because grunt doesn't like being root
 RUN adduser --disabled-password --gecos "" yeogurt; \
   echo "yeogurt ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-ENV HOME /home/yeogurt
-USER yeogurt
-WORKDIR /home/yeogurt
+# ENV HOME /home/yeogurt
+# USER yeogurt
+# WORKDIR /home/yeogurt
 
 ##- Expose ports -##
 EXPOSE 9010
