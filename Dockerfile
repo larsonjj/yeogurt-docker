@@ -94,5 +94,5 @@ EXPOSE 5858
 EXPOSE 27017
 EXPOSE 3306
 
-##- Setup Bash -##
-CMD ["/bin/bash"]
+# Always run as the yeogurt user
+ENTRYPOINT ["/bin/su", "-", "yeogurt"]
